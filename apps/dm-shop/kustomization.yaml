@@ -1,22 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# 1. List all the base resource files
 resources:
-- base/deployment.yaml
-- base/config-map.yaml
-- base/service-account.yaml
-- base/ingress.yaml
-- base/service.yaml
-- base/secret.yaml
-
-# 2. Set the image tag for the Deployment
-# This is a key feature of Kustomize: easily updating the image tag.
-images:
-- name: johnnguyendeveloper/dm-shop:latest # Reference the base image name without the tag
-
-# Note: Kustomize is smart enough to handle the JSON structure here.
-# However, the most robust way to use `literals` is to supply the
-# Base64-encoded `.dockerconfigjson` string itself, which is complex.
-# A simpler and more common pattern is to use a separate file for the credentials:
-# ----
+- base
